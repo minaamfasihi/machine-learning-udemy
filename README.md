@@ -1,1 +1,1 @@
-# machine-learning-udemy
+# udemy-machine-learning
