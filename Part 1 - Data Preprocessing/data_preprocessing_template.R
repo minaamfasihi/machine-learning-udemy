@@ -11,10 +11,10 @@ dataset$Salary = ifelse(is.na(dataset$Salary), ave(dataset$Salary, FUN = functio
 # Encoding categorical data
 
 dataset$Country = factor(
-                          dataset$Country,
-                          levels = c('France', 'Spain', 'Germany'),
-                          labels = c(1, 2, 3)
-                        )
+  dataset$Country,
+  levels = c('France', 'Spain', 'Germany'),
+  labels = c(1, 2, 3)
+)
 
 dataset$Purchased = factor(
   dataset$Purchased,
@@ -22,3 +22,11 @@ dataset$Purchased = factor(
   labels = c(0, 1)
 )
 
+# Splitting the dataset into Training and Test set
+
+# install.packages('caTools')
+library(caTools)
+set.seed(123)
+split = sample.split(dataset$Purchased, SplitRatio = 0.8)
+training_set = subset(dataset, split == TRUE)
+test_set = subset(dataset, split == FALSE)
